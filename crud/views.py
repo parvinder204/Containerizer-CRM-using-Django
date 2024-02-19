@@ -51,3 +51,9 @@ def signin(request):
 @login_required(login_url='signin')
 def home(request):
     return render(request, 'home.html')
+
+@login_required(login_url='signin')
+def signout(request):
+    logout(request)
+    messages.success(request, "You have been Logged Out Successfully!")
+    return redirect('index')
