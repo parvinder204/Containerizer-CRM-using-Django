@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm # AddRecordForm
+from .forms import SignUpForm, AddRecordForm
 from django.contrib.auth.decorators import login_required
-#from .models import Record
+from .models import Record
 
 
 def index(request):
@@ -57,3 +57,8 @@ def signout(request):
     logout(request)
     messages.success(request, "You have been Logged Out Successfully!")
     return redirect('index')
+
+@login_required(login_url='signin')
+def report(request):
+	records = Record.objects.all()
+	return render(request, 'report.html', {'records':records})

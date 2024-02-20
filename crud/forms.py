@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-#from .models import Record
+from .models import Record
 
 
 class SignUpForm(UserCreationForm):
@@ -32,16 +32,19 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
 
 
-""" class AddRecordForm(forms.ModelForm):
-	first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
-	last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
-	email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email", "class":"form-control"}), label="")
-	phone = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Phone", "class":"form-control"}), label="")
-	address = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Address", "class":"form-control"}), label="")
-	city = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"City", "class":"form-control"}), label="")
-	state = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"State", "class":"form-control"}), label="")
-	zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Zipcode", "class":"form-control"}), label="")
+class AddRecordForm(forms.ModelForm):
+	order_date = forms.DateField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Order Date", "class":"form-control"}), label="")
+	shipping_date = forms.DateField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Shipping Date", "class":"form-control"}), label="")
+	ship_mode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Ship Mode", "class":"form-control"}), label="")
+	postal_code = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Postal Code", "class":"form-control"}), label="")
+	region = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Region", "class":"form-control"}), label="")
+	category = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Category", "class":"form-control"}), label="")
+	sub_category = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Sub-Category", "class":"form-control"}), label="")
+	sales = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Sales", "class":"form-control"}), label="")
+	quantity = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Quantity", "class":"form-control"}), label="")
+	profit = forms.FloatField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Profit", "class":"form-control"}), label="")
+	order_rating = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Order Rating", "class":"form-control"}), label="")
  
 	class Meta:
 		model = Record
-		exclude = ("user",)"""
+		exclude = ("user",)
