@@ -62,3 +62,17 @@ def signout(request):
 def report(request):
 	records = Record.objects.all()
 	return render(request, 'report.html', {'records':records})
+
+@login_required(login_url='signin')
+def add_record(request):
+	form = AddRecordForm(request.POST or None)
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			if form.is_valid():
+				add_record = form.save()
+				messages.success(request, "Record Added...")
+				return redirect('home')
+		return render(request, 'add_record.html', {'form':form})
+	else:
+		messages.success(request, "You Must Be Logged In...")
+		return redirect('home') 
