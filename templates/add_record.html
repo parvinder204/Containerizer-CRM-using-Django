@@ -31,7 +31,7 @@
         .bgimg-1 {
             background-position: center;
             background-size: cover;
-            background-image: url("{% static '/img/add_r.png' %}");
+            background-image: url("{% static '/img/bb.jpg' %}");
             min-height: 100%;
         }
 
@@ -45,14 +45,13 @@
 <body>
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
-        <div class="w3-bar w3-white w3-card" id="myNavbar">
-            <a href="home" class="w3-bar-item w3-button w3-wide">RMV</a>
+        <div class="w3-bar w3-blue w3-card" id="myNavbar">
+            <a href="home" class="w3-bar-item w3-button w3-wide">CONTAINER</a>
             <!-- Right-sided navbar links -->
             <div class="w3-right w3-hide-small">
                 <a href="home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
                 <a href="add_record" class="w3-bar-item w3-button"><i class="fa fa-drivers-license"></i> ADD RECORD</a>
                 <a href="report" class="w3-bar-item w3-button"><i class="fa fa-address-book"></i> REPORT</a>
-                <a href="/" class="w3-bar-item w3-button"><i class="fa fa-dashboard"></i> DASHBOARD</a>
                 <a href="signout" class="w3-bar-item w3-button"><i class="fa fa-power-off"></i> LOGOUT</a>
 
             </div>
@@ -72,7 +71,6 @@
             ×</a>
         <a href="add_record" onclick="w3_close()" class="w3-bar-item w3-button">ADD RECORD</a>
         <a href="report" onclick="w3_close()" class="w3-bar-item w3-button">REPORT</a>
-        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button">DASHBOARD</a>
         <a href="logout" onclick="w3_close()" class="w3-bar-item w3-button">LOGOUT</a>
 
     </nav>

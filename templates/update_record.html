@@ -24,7 +24,7 @@
         html {
             height: 100%;
             line-height: 1.8;
-            color: rgb(3, 3, 3);
+            color: rgb(255, 253, 253);
             background-color: black;
         }
 
@@ -32,14 +32,13 @@
         .bgimg-1 {
             background-position: center;
             background-size: cover;
-            background-image: url("{% static '/img/black.jpg' %}");
+            background-image: url("{% static '/img/bb.jpg' %}");
             min-height: 100%;
         }
 
         .w3-bar .w3-button {
             padding: 16px;
         }
-
     </style>
 </head>
 
@@ -50,10 +49,11 @@
             <a href="home" class="w3-bar-item w3-button w3-wide">CONTAINER</a>
             <!-- Right-sided navbar links -->
             <div class="w3-right w3-hide-small">
-                <a href="home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
-                <a href="add_record" class="w3-bar-item w3-button"><i class="fa fa-drivers-license"></i> ADD RECORD</a>
-                <a href="report" class="w3-bar-item w3-button"><i class="fa fa-address-book"></i> REPORT</a>
-                <a href="signout" class="w3-bar-item w3-button"><i class="fa fa-power-off"></i> LOGOUT</a>
+                <a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
+                <a href="{% url 'add_record' %}" class="w3-bar-item w3-button"><i class="fa fa-drivers-license"></i> ADD
+                    RECORD</a>
+                <a href="{% url 'report' %}" class="w3-bar-item w3-button"><i class="fa fa-address-book"></i> REPORT</a>
+                <a href="{% url 'signout' %}" class="w3-bar-item w3-button"><i class="fa fa-power-off"></i> LOGOUT</a>
 
             </div>
             <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -70,58 +70,23 @@
         style="display:none" id="mySidebar">
         <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close
             ×</a>
-        <a href="home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
-        <a href="add_record" onclick="w3_close()" class="w3-bar-item w3-button"> ADD RECORD</a>
-        <a href="report" onclick="w3_close()" class="w3-bar-item w3-button"> REPORT</a>
-        <a href="logout" onclick="w3_close()" class="w3-bar-item w3-button"> LOGOUT</a>
+        <a href="{% url 'home' %}" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
+        <a href="{% url 'add_record' %}" onclick="w3_close()" class="w3-bar-item w3-button"> ADD RECORD</a>
+        <a href="{% url 'report' %}" onclick="w3_close()" class="w3-bar-item w3-button"> REPORT</a>
+        <a href="{% url 'signout' %}" onclick="w3_close()" class="w3-bar-item w3-button"> LOGOUT</a>
 
     </nav>
+    <br><br>
     <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
-        <br><br>
-        <div class="w3-container">
-            <h2>All Records</h2>
-            <div class="w3-responsive">
-                <table class="w3-table-all w3-hoverable">
-                    <tr class="w3-black">
-                        <th>ID</th>
-                        <th>Order Date</th>
-                        <th>Shipping Date</th>
-                        <th>Ship Mode</th>
-                        <th>Postal Code</th>
-                        <th>Region</th>
-                        <th>Category</th>
-                        <th>Sub Category</th>
-                        <th>Sales</th>
-                        <th>Quantity</th>
-                        <th>Profit</th>
-                        <th>Order Rating</th>
-                    </tr>
-
-                    {% if records %}
-                    {% for record in records %}
-                    <tr>
-                        <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
-                        <td>{{ record.order_date }}</td>
-                        <td>{{ record.shipping_date }}</td>
-                        <td>{{ record.ship_mode }}</td>
-                        <td>{{ record.postal_code }}</td>
-                        <td>{{ record.region }}</td>
-                        <td>{{ record.category }}</td>
-                        <td>{{ record.sub_category }}</td>
-                        <td>{{ record.sales }}</td>
-                        <td>{{ record.quantity }}</td>
-                        <td>{{ record.profit }}</td>
-                        <td>{{ record.order_rating }}</td>
-                    </tr>
-                    {% endfor %}
-                    {% endif %}
-
-                </table>
-            </div>
-            <div class="w3-panel w3-red">
-            </div>
+        <br>
+        <div class="col-md-6 offset-md-3 w3-center">
+            <h1>Update Record</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-secondary w3-yellow">Update Record</button>
+            </form>
         </div>
-      
     </header>
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-28">
@@ -145,7 +110,6 @@
                 mySidebar.style.display = 'block';
             }
         }
-
         // Close the sidebar with the close button
         function w3_close() {
             mySidebar.style.display = "none";
