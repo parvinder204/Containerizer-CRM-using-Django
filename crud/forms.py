@@ -31,7 +31,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
 
-
+ 
 class AddRecordForm(forms.ModelForm):
 	order_date = forms.DateField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Order Date", "class":"form-control"}), label="")
 	shipping_date = forms.DateField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Shipping Date", "class":"form-control"}), label="")

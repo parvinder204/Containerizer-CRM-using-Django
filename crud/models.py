@@ -14,4 +14,4 @@ class Record(models.Model):
     order_rating = models.IntegerField()
 
     def __str__(self):
-        return(f"{self.region} {self.postal_code}")
+        return(f"{self.region} {self.postal_code}") 
