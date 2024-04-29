@@ -14,7 +14,7 @@ A CRM website using Python Django and Deploy through Docker as Container
 * cd Containerizer-CRM-using-Django 
 * python -m pip install --upgrade pip
 * pip install -r requirements.txt
-* python manage,py createsuperuser
+* python manage.py createsuperuser
 * python manage.py migrate
 * python manage.py runserver
     
