@@ -5,11 +5,11 @@ A CRM website using Python Django and Deploy through Docker as Container
 # USER MANUAL
 
 1. Prerequisite
-    a. Git 
-    b. Docker
-    c. OS with Python 
+* Git 
+* Docker
+* OS with Python 
 
-2. Project Setup 
+3. Project Setup 
     a. git clone https://github.com/parvinder204/Containerizer-CRM-using-Django.git
     b. cd Containerizer-CRM-using-Django 
     c. python -m pip install --upgrade pip
@@ -18,7 +18,7 @@ A CRM website using Python Django and Deploy through Docker as Container
     f. python manage.py migrate
     g. python manage.py runserver
     
-3. Once your Project is setup and running, Go to http://127.0.0.1:8000
+4. Once your Project is setup and running, Go to http://127.0.0.1:8000
 
 
 
